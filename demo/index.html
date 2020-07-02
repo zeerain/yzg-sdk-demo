@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSSDK文档调试</title>
+</head>
+<body>
+  <h1>仿微信JSSDK实现, 按F12查看打印信息</h1>
+  <script src="../dist/yzg-0.0.1.min.js"></script>
+  <script>
+    $yzg.config({
+      appKey: 'hello', 
+      timestamp: +new Date(), 
+      nonceStr: 'zeerain',
+      skdApiList: ['miniPay', 'miniShare', 'appPay', 'appShare'] 
+    })
+    
+    $yzg.ready(function(){
+      $yzg.miniPay({
+        data: {a: '11', b: false, c: 222},
+        fail: function (res) {
+          console.log('miniPay fail', res);
+        }
+      })
+      $yzg.appPay()
+    })
+  </script>
+</body>
+</html>
